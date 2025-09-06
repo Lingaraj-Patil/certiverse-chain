@@ -5,7 +5,8 @@ import {
   Plus, 
   Search,
   Settings,
-  Home
+  Home,
+  Ban
 } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 import {
@@ -33,6 +34,7 @@ const institutionItems = [
 const certificateItems = [
   { title: 'Issue Certificate', url: '/certificate/issue', icon: Plus },
   { title: 'Verify Certificate', url: '/certificate/verify', icon: Search },
+  { title: 'Revoke Certificate', url: '/certificate/revoke', icon: Ban },
   { title: 'My Certificates', url: '/certificates', icon: FileText },
 ];
 

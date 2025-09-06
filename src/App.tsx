@@ -11,6 +11,7 @@ import RegisterInstitution from "./pages/RegisterInstitution";
 import VerifyInstitution from "./pages/VerifyInstitution";
 import IssueCertificate from "./pages/IssueCertificate";
 import VerifyCertificate from "./pages/VerifyCertificate";
+import RevokeCertificate from "./pages/RevokeCertificate";
 import Certificates from "./pages/Certificates";
 import NotFound from "./pages/NotFound";
 
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/institution/verify" element={<VerifyInstitution />} />
               <Route path="/certificate/issue" element={<IssueCertificate />} />
               <Route path="/certificate/verify" element={<VerifyCertificate />} />
+              <Route path="/certificate/revoke" element={<RevokeCertificate />} />
               <Route path="/certificates" element={<Certificates />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
+import { useEvmWallet } from '@/hooks/use-evm-wallet';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,7 +11,9 @@ import { registerInstitution } from '@/lib/api';
 import { Building2, Loader2 } from 'lucide-react';
 
 export default function RegisterInstitution() {
-  const { connected } = useWallet();
+  const { connected: solanaConnected } = useWallet();
+  const { isConnected: evmConnected } = useEvmWallet();
+  const connected = solanaConnected || evmConnected;
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -24,7 +27,7 @@ export default function RegisterInstitution() {
     if (!connected) {
       toast({
         title: 'Wallet not connected',
-        description: 'Please connect your wallet to register an institution.',
+        description: 'Please connect Phantom or MetaMask to register an institution.',
         variant: 'destructive',
       });
       return;
@@ -120,7 +123,7 @@ export default function RegisterInstitution() {
             {!connected && (
               <div className="p-4 bg-warning/10 border border-warning/20 rounded-lg">
                 <p className="text-warning text-sm font-medium">
-                  Please connect your wallet to register an institution.
+                  Please connect Phantom or MetaMask to register an institution.
                 </p>
               </div>
             )}
